@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="../static/bootstrap/css/bootstrap.min.css">
+    <script type="text/javascript" src="../static/bootstrap/js/jquery.js"></script>
+    <title>Boton de panico.</title>
+	<title></title>
+</head>
+<body>
+	<form method="post" action="{{url_for('localizar')}}" style="border: 1px solid; margin-top: 100px; border-radius: 10px" class="col-lg-4   col-sm-8  col-md-8 offset-sm-2 offset-sm-2  offset-lg-4">
+    
+        
+           <center style="margin-top: 15px"><label>Coordenadas de ubicaión</label> </center>
+   
+   
+    <div class="row" style="margin-top: 15px"> 
+        <div class="input-group">
+            <label class="col-2">Latitud:</label>
+            <input type="text" id="text_latitud" name="text_lat"  class="col-8 offset-1 form-control latitd">
+        </div>
+    </div>
+    <div class="row" style="margin-top: 15px"> 
+        <div class="input-group">
+            <label class="col-2">Logitud:</label>
+            <input type="text" id="text_longitud" name="text_lon" class="col-8 offset-1 form-control longitud">
+        </div>
+    </div>
+    <div class="row" style="margin-top: 15px"> 
+        <div class="input-group">
+            <button class="btn btn-info col-3 offset-8" style="margin-bottom: 15px">Pedir ayuda</button>
+        </div>
+    </div>
+<script type="text/javascript">
+	//var mapa = "https://www.google.com/maps/@"
+	
+	if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(mostrarUbicacion);
+}
+
+function mostrarUbicacion (ubicacion) {
+	
+ 	document.getElementById("text_latitud").value = ubicacion.coords.latitude;
+ 	 document.getElementById("text_longitud").value = ubicacion.coords.longitude;
+}
+
+</script>
+</body>
+</html>

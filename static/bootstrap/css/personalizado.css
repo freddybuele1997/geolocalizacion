@@ -1,0 +1,72 @@
+/*azul metalico #007bff* background-color: rgb(136, 134, 146);*/
+*{
+	font-family: "Lucida Bright";
+}
+.body{
+	background-color: #bbbbbb;
+}
+.formulario{
+	margin-top: 50px;
+	border-radius: 10px;
+	background-color: #FFFFFF;
+	border: 1px solid;
+	border-color:#bbbbbb; 
+	height: 450px;
+}
+.form-control{
+	border-color: #242424;
+}
+.menus{
+	margin-top: 50px;
+	border-radius: 10px;
+	background-color: #c1e2ff;
+	border: 1px solid;
+	border-color:#c1e2ff; 
+	height: 350px;
+}
+.menus:hover{
+	background-color: #e0dcdaf0;
+}
+.titulo-centro{
+	font-size: 32px;
+	font-family: arial;
+	color: #007bff;
+	text-align: center;
+}
+.form-{
+	margin-top: 15px;
+}
+.textos{
+	border-radius: 20px;
+}
+.btn{
+	font-size: 12px;
+	color: #FFFFFF;
+	padding: 0px;
+	border-radius: 0px;
+	background-color: #242424;
+}
+.btn:hover{
+	background: #bbbbbb;
+
+}
+.img{
+	height: 38px;
+	width: 38px;
+}
+.img:hover{
+
+	cursor:pointer;
+	cursor: hand;
+
+}
+.dark{
+	background-color: #242424;
+	color: #ffffff;
+    font-size:12px;
+}
+.table th,
+.table td{
+	padding: 0rem;
+	font-size:13px;
+}
