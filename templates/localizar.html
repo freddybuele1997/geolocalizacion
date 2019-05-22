@@ -15,7 +15,7 @@
    
     <div class="row" style="margin-top: 15px"> 
         <div class="input-group">
-            <label class="col-2">Latitud:</label>
+            <label class="col-2">Direccion:</label>
             <input type="text" id="text_latitud" name="text_lat"  class="col-8 offset-1 form-control latitd">
         </div>
     </div>
@@ -31,21 +31,6 @@
         </div>
     </div>
 <script type="text/javascript">
-  $.post( "/postmethod", {
-    javascript_data: 'data' 
-});
-
-
- $.get("/getpythondata", function(data) {
-    document.getElementById("text_latitud").value=$.parseJSON(data)
-})
-
-</script>
-
-
-
-{{dato}}
-<script type="text/javascript">
 	//var mapa = "https://www.google.com/maps/@"
 	
 	if (navigator.geolocation) {
@@ -53,11 +38,18 @@
 }
 
 function mostrarUbicacion (ubicacion) {
-	
+	$.post( "/postmethod", {
+    js_latitud: ubicacion.coords.latitude,
+    js_longitud: ubicacion.coords.longitude,
+});
  	document.getElementById("text_latitud").value = ubicacion.coords.latitude;
  	 document.getElementById("text_longitud").value = ubicacion.coords.longitude;
 }
-
+$.get("/getpythondata", function(data) {
+    
+    x = $.parseJSON(data)
+    document.getElementById("text_latitud").value=x.direccion
+})
 </script>
 </body>
 </html>
