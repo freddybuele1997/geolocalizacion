@@ -31,6 +31,21 @@
         </div>
     </div>
 <script type="text/javascript">
+  $.post( "/postmethod", {
+    javascript_data: 'data' 
+});
+
+
+ $.get("/getpythondata", function(data) {
+    document.getElementById("text_latitud").value=$.parseJSON(data)
+})
+
+</script>
+
+
+
+{{dato}}
+<script type="text/javascript">
 	//var mapa = "https://www.google.com/maps/@"
 	
 	if (navigator.geolocation) {

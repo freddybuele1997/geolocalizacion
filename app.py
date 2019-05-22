@@ -1,6 +1,19 @@
-from flask import Flask, render_template, request, make_response,redirect,url_for
+from flask import Flask, render_template, request, make_response, redirect, url_for
+import urllib.request, json
 
 app = Flask(__name__)
+
+jsdata = 'dsd'
+
+
+def public_ip():
+    lista = "0123456789."
+    ip = ""
+    dato = urllib.request.urlopen("http://checkip.dyndns.org").read()
+    for x in str(dato):
+        if x in lista:
+            ip += x
+    return ip
 
 
 @app.route("/")
@@ -27,10 +40,21 @@ def generar_dato():
 
 @app.route("/localizar", methods=['POST', 'GET'])
 def localizar():
-
-
     return render_template("localizar.html")
 
 
+@app.route('/postmethod', methods=['POST'])
+def get_post_javascript_data():
+    global jsdata
+    jsdata = request.form['javascript_data']
+    print(jsdata)
+    return jsdata
+
+@app.route('/getpythondata')
+def get_python_data():
+    print(jsdata)
+    return json.dumps(jsdata)
+
+
 if __name__ == "__main__":
-    app.run(debug=False)
+    app.run(debug=True)
