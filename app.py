@@ -1,11 +1,11 @@
-from flask import Flask, render_template, request, redirect, url_for, jsonify, session, escape
+from flask import Flask, render_template, request, redirect, url_for, jsonify, session, make_response
 from flask_mail import Mail, Message
 import json
 from pygeocoder import Geocoder
 
 app = Flask(__name__)
 mail = Mail(app)
-app.secret_key = "123456789"
+
 
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
@@ -24,7 +24,7 @@ def correo():
     msg.body = request.form["text_desc"]
     mail.send(msg)
     help = request.form["text_email"]
-    return render_template('confirmacion.html',help = help)
+    return render_template('confirmacion.html', help=help)
 
 
 js_latitud = 'lat'
@@ -34,32 +34,37 @@ resultado = 'direccion'
 
 @app.route("/")
 def index():
-    if 'datos' in session:
-        return redirect(url_for('localizar'))
-    else:
+    verificar = request.cookies.get('datos', None)
+    if verificar == None:
         return render_template("geolocalizacion.html")
+    else:
+        return redirect(url_for('localizar'))
 
 
 @app.route("/generar_dato", methods=['POST', 'GET'])
 def generar_dato():
-    if 'datos' in session:
+    verificar = request.cookies.get('datos', None)
+    if verificar == None:
+        resp = make_response(render_template('localizar.html'))
 
-        return redirect(url_for('localizar'))
 
-    else:
-        session.permanent = True
-        session['datos'] = {'nombre': request.form["text_name"], 'apellidos': request.form[
+        dict = {}
+        dict = {'nombre': request.form["text_name"], 'apellidos': request.form[
             "text_second_name"], 'email': request.form["text_email"]}
+        resp.set_cookie('datos','', 'ddd','ddd')
+        return resp
+    else:
         return redirect(url_for('localizar'))
 
 
 @app.route("/localizar", methods=['POST', 'GET'])
 def localizar():
-    if 'datos' in session:
-        print(session['datos'].get('email'))
-        return render_template("localizar.html")
-    else:
+    verificar = request.cookies.get('datos', None)
+    if verificar == None:
         return redirect(url_for('index'))
+    else:
+
+        return render_template("localizar.html")
 
 
 @app.route('/postmethod', methods=['POST'])
@@ -72,7 +77,8 @@ def get_post_javascript_data():
                                                                                           float(js_longitud))
     global coordenadas
     coordenadas = {'nombres': session['datos'].get('nombre'), 'apellido': session['datos'].get('apellidos'),
-                   'direccion': results.formatted_address, 'email': session['datos'].get('email'),'mensaje_predeterminado':'NECESITO DE TU AYUDA ESTOY EN UNA SITUACIÓN DESESPERANTE POR FAVOR VEN RAPIDO!!!!'}
+                   'direccion': results.formatted_address, 'email': session['datos'].get('email'),
+                   'mensaje_predeterminado': 'NECESITO DE TU AYUDA ESTOY EN UNA SITUACIÓN DESESPERANTE POR FAVOR VEN RAPIDO!!!!'}
 
     return jsonify(coordenadas)
 
