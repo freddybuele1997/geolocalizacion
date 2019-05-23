@@ -7,22 +7,40 @@
 	<title></title>
 </head>
 <body>
-	<form method="post" action="{{url_for('localizar')}}" style="border: 1px solid; margin-top: 100px; border-radius: 10px" class="col-lg-4   col-sm-8  col-md-8 offset-sm-2 offset-sm-2  offset-lg-4">
+	<form method="post" action="{{url_for('correo')}}"  style="border: 1px solid; margin-top: 100px; border-radius: 10px" class="col-lg-4   col-sm-8  col-md-8 offset-sm-2 offset-sm-2  offset-lg-4">
     
         
-           <center style="margin-top: 15px"><label>Coordenadas de ubicaión</label> </center>
+           <center style="margin-top: 15px"><label>Ubicacion</label> </center>
    
    
     <div class="row" style="margin-top: 15px"> 
         <div class="input-group">
-            <label class="col-2">Direccion:</label>
-            <input type="text" id="text_latitud" name="text_lat"  class="col-8 offset-1 form-control latitd">
+            <label class="col-2">Nombres:</label>
+            <input type="text" id="txt_nombre" name="text_name"  class="col-8 offset-1 form-control latitd" >
         </div>
     </div>
     <div class="row" style="margin-top: 15px"> 
         <div class="input-group">
-            <label class="col-2">Logitud:</label>
-            <input type="text" id="text_longitud" name="text_lon" class="col-8 offset-1 form-control longitud">
+            <label class="col-2">Apellidos:</label>
+            <input type="text" id="txt_apellido" name="text_ape" class="col-8 offset-1 form-control longitud" >
+        </div>
+    </div>
+    <div class="row" style="margin-top: 15px"> 
+        <div class="input-group">
+            <label class="col-2">Direccion:</label>
+            <input type="text" id="txt_direccion" name="text_dir" class="col-8 offset-1 form-control longitud" >
+        </div>
+    </div>
+    <div class="row" style="margin-top: 15px"> 
+        <div class="input-group">
+            <label class="col-2">Correo de contacto:</label>
+            <input type="text" id="txt_correo" name="text_email" class="col-8 offset-1 form-control longitud" >
+        </div>
+    </div>
+    <div class="row" style="margin-top: 15px"> 
+        <div class="input-group">
+            <label class="col-2">Descripcion:</label>
+            <textarea class="col-8 offset-1 form-control longitud" id="txt_descripcion" name="text_desc"  rows="3"></textarea>
         </div>
     </div>
     <div class="row" style="margin-top: 15px"> 
@@ -30,6 +48,7 @@
             <button class="btn btn-info col-3 offset-8" style="margin-bottom: 15px">Pedir ayuda</button>
         </div>
     </div>
+</form>
 <script type="text/javascript">
 	//var mapa = "https://www.google.com/maps/@"
 	
@@ -42,13 +61,16 @@ function mostrarUbicacion (ubicacion) {
     js_latitud: ubicacion.coords.latitude,
     js_longitud: ubicacion.coords.longitude,
 });
- 	document.getElementById("text_latitud").value = ubicacion.coords.latitude;
- 	 document.getElementById("text_longitud").value = ubicacion.coords.longitude;
+ //	document.getElementById("text_latitud").value = ubicacion.coords.latitude;
+ 	 //document.getElementById("text_longitud").value = ubicacion.coords.longitude;
 }
 $.get("/getpythondata", function(data) {
-    
     x = $.parseJSON(data)
-    document.getElementById("text_latitud").value=x.direccion
+    document.getElementById("txt_nombre").value=x.nombres,
+    document.getElementById("txt_apellido").value=x.apellido,
+    document.getElementById("txt_direccion").value=x.direccion,
+    document.getElementById("txt_correo").value=x.email
+    document.getElementById("txt_descripcion").value=x.mensaje_predeterminado
 })
 </script>
 </body>
