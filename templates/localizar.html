@@ -1,68 +1,151 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="../static/bootstrap/css/bootstrap.min.css">
-    <script type="text/javascript" src="../static/bootstrap/js/jquery.js"></script>
-    <title>Boton de panico.</title>
-	<title></title>
+    <title>Boton Pánico.</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Free HTML5 Website Template by uicookies.com"/>
+    <meta name="keywords"
+          content="free bootstrap 4, free bootstrap 4 template, free website templates, free html5, free template, free website template, html5, css3, mobile first, responsive"/>
+    <meta name="author" content="uicookies.com"/>
+    <link rel="stylesheet" href="../static/bootstrap/fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/bootstrap/css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="../static/bootstrap/css/icomoon.css">
+    <link rel="stylesheet" href="../static/bootstrap/css/style.css">
+    
+    
+
 </head>
 <body>
-	<form method="post" action="{{url_for('correo')}}"  style="border: 1px solid; margin-top: 100px; border-radius: 10px" class="col-lg-4   col-sm-8  col-md-8 offset-sm-2 offset-sm-2  offset-lg-4">
-    
-        
-           <center style="margin-top: 15px"><label>Ubicacion</label> </center>
-   
-   
-    <div class="row" style="margin-top: 15px"> 
-        <div class="input-group">
-            <label class="col-2">Nombres:</label>
-            <input type="text" id="txt_nombre" name="text_name"  class="col-8 offset-1 form-control latitd" >
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark probootstrap-navabr-dark">
+    <div class="container">
+        <a class="navbar-brand" href="/">Inicio</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#probootstrap-nav"
+                aria-controls="probootstrap-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="probootstrap-nav">
+            <ul class="navbar-nav ml-auto">
+                <!--
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                -->
+                
+            </ul>
+
         </div>
     </div>
-    <div class="row" style="margin-top: 15px"> 
-        <div class="input-group">
-            <label class="col-2">Apellidos:</label>
-            <input type="text" id="txt_apellido" name="text_ape" class="col-8 offset-1 form-control longitud" >
-        </div>
+</nav>
+
+
+<section class="probootstrap-cover">
+    <div class="main">
+
+        <!-- Sign up form -->
+        <section class="signup">
+            <div class="container-form col-8">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h2 class="form-title">Localización.</h2>
+
+
+                        <form method="post" action="{{url_for('correo')}}" class="register-form" id="register-form">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="text" id="txt_nombre" name="text_name" class=" latitd">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+
+                                    <input type="text" id="txt_apellido" name="text_ape" class=" longitud">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+
+                                    <input type="text" id="txt_direccion" name="text_dir" class="longitud">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+
+                                    <input type="text" id="txt_correo" name="text_email" class="longitud">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+
+                                    <textarea class="longitud" id="txt_descripcion" name="text_desc"
+                                              rows="3"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <button class="btn btn-primary mr-2 mb-2"> Solicitar ayuda. </button>
+                                    
+                                </div>
+                            </div>
+
+                        </form>
+
+
+                    </div>
+                    <div class="signup-image">
+                        <p style="font-size:26px;">
+                            Esta es su ubicacion en estos momentos.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
     </div>
-    <div class="row" style="margin-top: 15px"> 
-        <div class="input-group">
-            <label class="col-2">Direccion:</label>
-            <input type="text" id="txt_direccion" name="text_dir" class="col-8 offset-1 form-control longitud" >
-        </div>
+</section>
+
+
+<!--<footer class="probootstrap-footer">
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-md text-md-right text-left">
+        <p><small>&copy; Unlock 2017. All Rights Reserved. <br> Made with <span class="icon-heart"></span> by <a href="https://uicookies.com/">uiCookies</a> Demo Images: Unsplash</small></p>
+      </div>
     </div>
-    <div class="row" style="margin-top: 15px"> 
-        <div class="input-group">
-            <label class="col-2">Correo de contacto:</label>
-            <input type="text" id="txt_correo" name="text_email" class="col-8 offset-1 form-control longitud" >
-        </div>
-    </div>
-    <div class="row" style="margin-top: 15px"> 
-        <div class="input-group">
-            <label class="col-2">Descripcion:</label>
-            <textarea class="col-8 offset-1 form-control longitud" id="txt_descripcion" name="text_desc"  rows="3"></textarea>
-        </div>
-    </div>
-    <div class="row" style="margin-top: 15px"> 
-        <div class="input-group">
-            <button class="btn btn-info col-3 offset-8" style="margin-bottom: 15px">Pedir ayuda</button>
-        </div>
-    </div>
-</form>
+  </div>
+</footer>-->
+
+
+
+    <script type="text/javascript" src="../static/bootstrap/js/jquery.js"></script>
+
+    <script src="../static/bootstrap/js/popper.min.js"></script>
+    <script src="../static/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../static/bootstrap/js/main.js"></script>
 <script type="text/javascript">
-	//var mapa = "https://www.google.com/maps/@"
-	
-	if (navigator.geolocation) {
+    //var mapa = "https://www.google.com/maps/@"
+    
+    if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(mostrarUbicacion);
 }
 
 function mostrarUbicacion (ubicacion) {
-	$.post( "/postmethod", {
+    $.post( "/postmethod", {
     js_latitud: ubicacion.coords.latitude,
     js_longitud: ubicacion.coords.longitude,
 });
- //	document.getElementById("text_latitud").value = ubicacion.coords.latitude;
- 	 //document.getElementById("text_longitud").value = ubicacion.coords.longitude;
+ // document.getElementById("text_latitud").value = ubicacion.coords.latitude;
+     //document.getElementById("text_longitud").value = ubicacion.coords.longitude;
 }
 $.get("/getpythondata", function(data) {
     x = $.parseJSON(data)
@@ -74,4 +157,6 @@ $.get("/getpythondata", function(data) {
 })
 </script>
 </body>
+
 </html>
+
